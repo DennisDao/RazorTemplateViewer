@@ -4,6 +4,8 @@
          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
          xmlns:local="clr-namespace:RazorTemplateViewer"
+         xmlns:views="clr-namespace:RazorTemplateViewer.Views" 
+         xmlns:convertors="clr-namespace:RazorTemplateViewer.Convertors"
          mc:Ignorable="d"
          Title="MainWindow"
          Width="{Binding WindowWidth, Mode=TwoWay, FallbackValue=800}"
@@ -14,15 +16,19 @@
          d:DesignWidth="800"
          AllowsTransparency="True"
          Background="Transparent"
-         ResizeMode="{Binding ResizeMode, Mode=TwoWay}"
+         ResizeMode="CanResizeWithGrip"
          WindowStyle="None"
         >
 
+    <Window.Resources>
+        <convertors:BooleanToVisibilityConvertor x:Key="BoolToVisibility" />
+    </Window.Resources>
+
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="60" ResizeBorderThickness="20" />
+        <WindowChrome CaptionHeight="60" ResizeBorderThickness="25"/>
     </WindowChrome.WindowChrome>
 
-    <Border Padding="{Binding WindowGutterWidth}">
+    <Border>
 
         <!--  Main window  -->
         <Grid>
@@ -41,7 +47,8 @@
                     <Grid>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="251*" />
+                            <ColumnDefinition Width="549*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
@@ -56,7 +63,7 @@
                         Height="40"
                         Background="{StaticResource DarkGreyBrush}"
                         CornerRadius="{Binding TitleBarCornerRadius}"
-                        WindowChrome.IsHitTestVisibleInChrome="False">
+                        WindowChrome.IsHitTestVisibleInChrome="False" Grid.ColumnSpan="2">
 
                             <!--  Window controls  -->
                             <Grid HorizontalAlignment="right">
@@ -78,14 +85,25 @@
                                 </Button>
 
                                 <Button
+                                 Grid.Column="1"
+                                 Command="{Binding MaximizedOrNormalWindowCommand}"
+                                 Style="{StaticResource WindowButtonStyle}"
+                                 WindowChrome.IsHitTestVisibleInChrome="True"
+                                 Visibility="{Binding IsWindowMaximized, Converter={StaticResource BoolToVisibility}, ConverterParameter=reverse}">
+                                    <Border>
+                                        <Image Source="Assets\max-w-30.png" />
+                                    </Border>       
+                                </Button>
+
+                                <Button
                                 Grid.Column="1"
-                                Command="{Binding MaximizedWindowCommand}"
+                                Command="{Binding MaximizedOrNormalWindowCommand}"
                                 Style="{StaticResource WindowButtonStyle}"
-                                WindowChrome.IsHitTestVisibleInChrome="True">
+                                WindowChrome.IsHitTestVisibleInChrome="True"
+                                Visibility="{Binding IsWindowMaximized, Converter={StaticResource BoolToVisibility}}">
                                     <Border>
                                         <Image Source="Assets\max-w-30.png" />
                                     </Border>
-
                                 </Button>
 
                                 <Button
@@ -96,7 +114,6 @@
                                     <Border>
                                         <Image Source="Assets\min-w-30.png" />
                                     </Border>
-
                                 </Button>
                             </Grid>
 
@@ -108,8 +125,9 @@
                         x:Name="Main"
                         Grid.Row="1"
                         Background="White"
-                        CornerRadius="0,0,10,10">
+                        CornerRadius="0,0,10,10" Grid.ColumnSpan="2">
                             <ContentControl x:Name="mainContent" Content="{Binding CurrentView}" />
+                            <!--<views:Home></views:Home>-->
                         </Border>
 
                     </Grid>

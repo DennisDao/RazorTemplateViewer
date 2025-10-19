@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="RazorTemplateViewer.Views.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit" 
+             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450"
+             d:DesignWidth="1000"
+             Loaded="UserControl_Loaded"
+             >
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" d:Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*" d:Width="500"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <avalonEdit:TextEditor 
+           x:Name="HtmlEditor"
+           ShowLineNumbers="True"
+           FontFamily="Consolas"
+           FontSize="14"
+           SyntaxHighlighting="HTML"
+           VerticalScrollBarVisibility="Auto"
+           HorizontalScrollBarVisibility="Auto"
+           Grid.Column="0"                     
+        />
+
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+
+        <wv2:WebView2 x:Name="pdfWebViewer" Grid.Column="2"></wv2:WebView2>
+
+        <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Stretch" />
+
+        <avalonEdit:TextEditor 
+           x:Name="JsonEditor"
+           ShowLineNumbers="True"
+           FontFamily="Consolas"
+           FontSize="14"
+           SyntaxHighlighting="HTML"
+           VerticalScrollBarVisibility="Auto"
+           HorizontalScrollBarVisibility="Auto"
+           VerticalAlignment="Stretch"
+           HorizontalAlignment="Stretch"
+           Grid.Column="4" 
+        />  
+
+    </Grid>
+</UserControl>
