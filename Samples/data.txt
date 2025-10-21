@@ -1,0 +1,16 @@
+﻿{
+  "ReceiptNumber": "WAQ023953932",
+  "RegistrationNumber": "1OS3RW",
+  "RegistrationFee": "$847.00",
+  "VehicleType": "CAR / TRUCK",
+  "Make": "TOYOTA",
+  "BodyType": "VAN",
+  "Colour": "WHITE",
+  "Year": "2006",
+  "Manufacture": "",
+  "SubTotal": "$847.00",
+  "CardFee": "$4.57",
+  "TotalAmount": "$851.57",
+  "PaymentDate": "24 Aug 2021 05:32 PM",
+  "BankReference": "3031959645"
+}

@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="RazorTemplateViewer.Views.Splash"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RazorTemplateViewer.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+
+        <Rectangle Fill="White"/>
+
+        <Viewbox Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Width="520" Height="360">
+            <Grid Width="520" Height="380">
+                <Grid x:Name="PaperHost" Width="320" Height="380" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform >
+                        <TransformGroup>
+                            <ScaleTransform x:Name="PaperScale" ScaleX="0.6" ScaleY="0.6"/>
+                            <RotateTransform x:Name="PaperRotate" Angle="0"/>
+                            <TranslateTransform x:Name="PaperTranslate" X="0" Y="0"/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Grid.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <!-- Animate Scale -->
+                                    <DoubleAnimation 
+                                     Storyboard.TargetName="PaperScale"
+                                     Storyboard.TargetProperty="ScaleX" 
+                                     From="0.2"
+                                     To="1.0"
+                                     Duration="0:0:1" 
+                                 />
+                                    <DoubleAnimation 
+                                    Storyboard.TargetName="PaperScale" 
+                                    Storyboard.TargetProperty="ScaleY"
+                                    From="0.2"
+                                    To="1.0"
+                                    Duration="0:0:1" 
+                                 />
+
+                                    <!-- Animate Rotation -->
+                                    <DoubleAnimation 
+                                    Storyboard.TargetName="PaperRotate"
+                                    Storyboard.TargetProperty="Angle"
+                                    To="360" Duration="0:0:1"
+                                    />
+
+                                    <!-- Animate Translation -->
+                                 <DoubleAnimation Storyboard.TargetName="PaperTranslate"
+                                 Storyboard.TargetProperty="X"
+                                 To="0" Duration="0:0:1.5" />
+
+                                    <DoubleAnimation Storyboard.TargetName="PaperTranslate"
+                                 Storyboard.TargetProperty="Y"
+                                 To="0" Duration="0:0:1.5" />
+
+                                    <!--<DoubleAnimation Storyboard.TargetName="PaperTranslate"
+                                    Storyboard.TargetProperty="X"
+                                    BeginTime="0:0:2"
+                                    To="1000"
+                                    Duration="0:0:1"
+                                    AccelerationRatio="0.2"
+                                    DecelerationRatio="0.8" />-->
+
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
+
+
+
+                    <Border CornerRadius="8" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#000000" BlurRadius="30" ShadowDepth="12" Opacity="0.6"/>
+                        </Border.Effect>
+                    </Border>
+
+
+                    <Border Background="White" BorderBrush="#30384A" BorderThickness="6" CornerRadius="8">
+                        <Grid>
+                            <Path Fill="#EAEFF4" Data="M244,0 L320,0 L320,64 L244,0 Z"  RenderTransformOrigin="1,1" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+
+                            <Border Background="#DF4B4B" CornerRadius="6" Padding="12,6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,24,0,0">
+                                <TextBlock Text="PDF" FontWeight="Bold" FontSize="36" Foreground="White"/>
+                            </Border>
+
+
+                            <StackPanel Margin="28,110,28,24" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <Rectangle x:Name="line1" Height="12" RadiusX="6" RadiusY="6" Fill="#E6ECF2" Width="200" Margin="10" HorizontalAlignment="Left" />
+                                <Rectangle x:Name="line2" Height="12" RadiusX="6" RadiusY="6" Fill="#E6ECF2" Width="200" Margin="10" HorizontalAlignment="Left" />
+                                <Rectangle x:Name="line3" Height="12" RadiusX="6" RadiusY="6" Fill="#E6ECF2" Width="230" Margin="10" HorizontalAlignment="Left" />
+                                <Rectangle x:Name="line4" Height="12" RadiusX="6" RadiusY="6" Fill="#E6ECF2" Width="120" Margin="10" HorizontalAlignment="Left" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>

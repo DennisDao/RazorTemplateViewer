@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VicRoads Payment Receipt</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+    .section { margin-top: 30px; }
+    .highlight { background-color: #e6f7ff; font-weight: bold; }
+    .color-cell { color: #ffffff; background-color: #000000; padding: 4px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <h1>VicRoads Payment Receipt</h1>
+
+  <p>Your payment has been successful. Please write down your receipt number for any further correspondence with VicRoads.</p>
+  <p><strong>Receipt number:</strong> @Model.ReceiptNumber</p>
+
+  <div class="section">
+    <table>
+      <tr>
+        <th>Registration renewal:</th>
+        <th>@Model.RegistrationNumber</th>
+        <th>@Model.RegistrationFee</th>
+      </tr>
+      <tr><td>Vehicle type:</td><td>@Model.VehicleType</td><td></td></tr>
+      <tr><td>Make:</td><td>@Model.Make</td><td></td></tr>
+      <tr><td>Body type:</td><td>@Model.BodyType</td><td></td></tr>
+      <tr><td>Colour:</td><td><span class="color-cell">@Model.Colour</span></td><td></td></tr>
+      <tr><td>Year of:</td><td>@Model.Year</td><td></td></tr>
+      <tr><td>Manufacture:</td><td>@Model.Manufacture</td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <table>
+      <tr><td>Sub total:</td><td>@Model.SubTotal</td></tr>
+      <tr><td>Card payment fee:</td><td>@Model.CardFee</td></tr>
+      <tr class="highlight"><td>Total amount :</td><td>@Model.TotalAmount</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <p><strong>Payment date and time:</strong> @Model.PaymentDate</p>
+    <p><strong>Bank authorisation reference:</strong> @Model.BankReference</p>
+  </div>
+
+</body>
+</html>

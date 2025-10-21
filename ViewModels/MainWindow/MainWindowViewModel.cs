@@ -78,8 +78,15 @@ namespace RazorTemplateViewer.ViewModels.MainWindow
         public MainWindowViewModel(Window window)
         {
             Window = window;
-            CurrentView = new HomeViewModel();
+            CurrentView = new SplashViewModel();
             SetupCommand();
+            ShowHomeScreen();
+        }
+
+        private async void ShowHomeScreen()
+        {
+            await Task.Delay(2000);
+            CurrentView = new HomeViewModel();
         }
  
 

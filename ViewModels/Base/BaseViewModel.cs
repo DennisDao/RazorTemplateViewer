@@ -2,7 +2,7 @@
 
 namespace RazorTemplateViewer.ViewModels.Base
 {
-    internal class BaseViewModel
+    internal class BaseViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// The event that is fired when any child property changes its value

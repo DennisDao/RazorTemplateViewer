@@ -4,51 +4,70 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit" 
-             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" xmlns:razortemplateviewer="clr-namespace:RazorTemplateViewer" xmlns:convertors="clr-namespace:RazorTemplateViewer.Convertors"
              mc:Ignorable="d" 
              d:DesignHeight="450"
              d:DesignWidth="1000"
              Loaded="UserControl_Loaded"
              >
-    <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" d:Width="250"></ColumnDefinition>
-            <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="*" d:Width="500"></ColumnDefinition>
-            <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <UserControl.Resources>
+        <convertors:BooleanToVisibilityConvertor x:Key="BoolToVisibility" />
+    </UserControl.Resources>
 
-        <avalonEdit:TextEditor 
-           x:Name="HtmlEditor"
-           ShowLineNumbers="True"
-           FontFamily="Consolas"
-           FontSize="14"
-           SyntaxHighlighting="HTML"
-           VerticalScrollBarVisibility="Auto"
-           HorizontalScrollBarVisibility="Auto"
-           Grid.Column="0"                     
-        />
+    <Border CornerRadius="0 0 10 10">
+        <Grid>
 
-        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" d:Width="250" MinWidth="20"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*" d:Width="500" MinWidth="20"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*" MinWidth="20"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <wv2:WebView2 x:Name="pdfWebViewer" Grid.Column="2"></wv2:WebView2>
+            <avalonEdit:TextEditor 
+                x:Name="HtmlEditor"
+                ShowLineNumbers="True"
+                FontFamily="Consolas"
+                FontSize="14"
+                SyntaxHighlighting="HTML"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Auto"
+                Grid.Column="0" 
+            />
 
-        <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Stretch" />
+           
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
 
-        <avalonEdit:TextEditor 
-           x:Name="JsonEditor"
-           ShowLineNumbers="True"
-           FontFamily="Consolas"
-           FontSize="14"
-           SyntaxHighlighting="HTML"
-           VerticalScrollBarVisibility="Auto"
-           HorizontalScrollBarVisibility="Auto"
-           VerticalAlignment="Stretch"
-           HorizontalAlignment="Stretch"
-           Grid.Column="4" 
-        />  
+            <wv2:WebView2 
+                x:Name="pdfWebViewer" 
+                Grid.Column="2"  
+                Visibility="{Binding IsRendering, Converter={StaticResource BoolToVisibility}, ConverterParameter=reverse}"/>
 
-    </Grid>
+
+            <razortemplateviewer:Rendering 
+                Grid.Column="2"
+                Visibility="{Binding IsRendering, Converter={StaticResource BoolToVisibility}}"/>
+
+
+
+            <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Stretch"/>
+
+            <avalonEdit:TextEditor 
+                x:Name="JsonEditor"
+                ShowLineNumbers="True"
+                FontFamily="Consolas"
+                FontSize="14"
+                SyntaxHighlighting="HTML"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Auto"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Grid.Column="4" 
+            />
+
+        </Grid>
+    </Border>
+   
 </UserControl>
