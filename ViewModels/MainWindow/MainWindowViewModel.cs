@@ -46,17 +46,17 @@ namespace RazorTemplateViewer.ViewModels.MainWindow
         /// <summary>
         /// The window curvature
         /// </summary>
-        public CornerRadius TitleBarCornerRadius { get; set; } = new CornerRadius(10, 10, 0, 0);
+        public CornerRadius TitleBarCornerRadius { get; set; } = new CornerRadius(5, 5, 0, 0);
 
         /// <summary>
         /// The window width
         /// </summary>
-        public int WindowWidth { get; set; } = 1600;
+        public int WindowWidth { get; set; } = 1200;
 
         /// <summary>
         /// The window height
         /// </summary>
-        public int WindowHeight { get; set; } = 1200;
+        public int WindowHeight { get; set; } = 800;
 
         /// <summary>
         /// The window gutter width
@@ -85,7 +85,7 @@ namespace RazorTemplateViewer.ViewModels.MainWindow
 
         private async void ShowHomeScreen()
         {
-            await Task.Delay(2000);
+            await Task.Delay(3000);
             CurrentView = new HomeViewModel();
         }
  
