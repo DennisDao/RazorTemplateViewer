@@ -139,8 +139,6 @@
                     </Border>
                 </Grid>
 
-
-
                 <Grid.Triggers>
                     <EventTrigger RoutedEvent="Grid.Loaded">
                         <BeginStoryboard x:Name="EntranceSB">

@@ -6,7 +6,7 @@ namespace RazorTemplateViewer.ViewModels.Home
 {
     internal class HomeViewModel : BaseViewModel
     {
-        public bool IsRendering { get; set; }
+        public bool IsRendering { get; set; } = true;
 
         public HomeViewModel() 
         {

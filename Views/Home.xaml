@@ -17,7 +17,7 @@
         <convertors:BooleanToVisibilityConvertor x:Key="BoolToVisibility" />
     </UserControl.Resources>
 
-    <Border CornerRadius="0 0 10 10">
+    <Border Background="White">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -53,7 +53,7 @@
                 Visibility="{Binding IsRendering, Converter={StaticResource BoolToVisibility}, ConverterParameter=reverse}"
                 ZoomFactor="2" />
 
-            <razortemplateviewer:Rendering Grid.Column="2" Visibility="{Binding IsRendering, Converter={StaticResource BoolToVisibility}}" />
+            <razortemplateviewer:Rendering_2 Grid.Column="2" Visibility="{Binding IsRendering, Converter={StaticResource BoolToVisibility}}" />
 
             <GridSplitter Grid.Column="3" HorizontalAlignment="Stretch" />
 

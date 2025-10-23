@@ -46,8 +46,6 @@
             <!--  Title Bar  -->
             <Border
                 Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
                 Height="40"
                 Background="{StaticResource DarkGreyBrush}"
                 CornerRadius="{Binding TitleBarCornerRadius}"
@@ -108,9 +106,9 @@
 
             <!--  Main Content  -->
             <ContentControl
-                x:Name="mainContent"
                 Grid.Row="1"
                 Margin="2,2,2,2"
+                Background="White"
                 Content="{Binding CurrentView}" />
 
         </Grid>
