@@ -1,11 +1,11 @@
-﻿<Application x:Class="RazorTemplateViewer.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:home="clr-namespace:RazorTemplateViewer.ViewModels.Home"
-             xmlns:vm="clr-namespace:RazorTemplateViewer.ViewModels"
-             xmlns:local="clr-namespace:RazorTemplateViewer" 
-             xmlns:Views="clr-namespace:RazorTemplateViewer.Views"
-             StartupUri="MainWindow.xaml">
+﻿<Application
+    x:Class="RazorTemplateViewer.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Views="clr-namespace:RazorTemplateViewer.Views"
+    xmlns:home="clr-namespace:RazorTemplateViewer.ViewModels.Home"
+    xmlns:vm="clr-namespace:RazorTemplateViewer.ViewModels"
+    StartupUri="MainWindow.xaml">
     <Application.Resources>
 
         <ResourceDictionary>
@@ -26,6 +26,6 @@
             </DataTemplate>
 
         </ResourceDictionary>
-        
+
     </Application.Resources>
 </Application>

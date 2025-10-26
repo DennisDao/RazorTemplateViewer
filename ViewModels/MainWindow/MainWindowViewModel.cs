@@ -85,7 +85,7 @@ namespace RazorTemplateViewer.ViewModels.MainWindow
 
         private async void ShowHomeScreen()
         {
-            await Task.Delay(3000);
+            await Task.Delay(4000);
             CurrentView = new HomeViewModel();
         }
  

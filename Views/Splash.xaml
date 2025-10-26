@@ -4,174 +4,270 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="MarginAnimation">
+            <ThicknessAnimation
+                Storyboard.TargetName="leftPage"
+                Storyboard.TargetProperty="Margin"
+                From="-100,0,0,0"
+                To="0,0,0,0"
+                Duration="0:0:1" />
+
+            <ThicknessAnimation
+                Storyboard.TargetName="rightPage"
+                Storyboard.TargetProperty="Margin"
+                From="100,0,0,0"
+                To="0,0,0,0"
+                Duration="0:0:1" />
+
+            <DoubleAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="left_page_path"
+                Storyboard.TargetProperty="StrokeThickness"
+                To="0"
+                Duration="0" />
+
+            <DoubleAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="right_page_path"
+                Storyboard.TargetProperty="StrokeThickness"
+                To="0"
+                Duration="0" />
+
+            <ThicknessAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="line1"
+                Storyboard.TargetProperty="Margin"
+                To="0,0,0,0"
+                Duration="0" />
+
+            <ThicknessAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="line2"
+                Storyboard.TargetProperty="Margin"
+                To="0,0,0,0"
+                Duration="0" />
+
+            <ThicknessAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="line3"
+                Storyboard.TargetProperty="Margin"
+                To="0,0,0,0"
+                Duration="0" />
+
+            <ThicknessAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="line4"
+                Storyboard.TargetProperty="Margin"
+                To="0,0,0,0"
+                Duration="0" />
+
+            <ThicknessAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="line5"
+                Storyboard.TargetProperty="Margin"
+                To="0,0,0,0"
+                Duration="0" />
+
+            <ThicknessAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="line6"
+                Storyboard.TargetProperty="Margin"
+                To="0,0,0,0"
+                Duration="0" />
+
+            <ThicknessAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="line7"
+                Storyboard.TargetProperty="Margin"
+                To="0,0,0,0"
+                Duration="0" />
+
+            <ThicknessAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="line8"
+                Storyboard.TargetProperty="Margin"
+                To="0,0,0,0"
+                Duration="0" />
+
+            <DoubleAnimation
+                BeginTime="0:0:1"
+                Storyboard.TargetName="page_frame"
+                Storyboard.TargetProperty="Opacity"
+                From="0"
+                To="1"
+                Duration="0" />
+
+        </Storyboard>
+
+        <Storyboard
+            x:Key="BlinkStoryboard"
+            AutoReverse="True"
+            RepeatBehavior="Forever">
+            <DoubleAnimation
+                Storyboard.TargetProperty="Opacity"
+                From="1.0"
+                To="0.0"
+                Duration="0:0:0.5" />
+        </Storyboard>
+
+
+    </UserControl.Resources>
+
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-        <Rectangle Fill="White" />
+        <!--<Rectangle
+            Grid.RowSpan="2"
+            Margin="-2,0,2,0"
+            Fill="#99000000" />-->
 
-        <Viewbox
-            Width="520"
-            Height="360"
+        <Rectangle
+            Grid.RowSpan="2"
+            Margin="-2,0,2,0"
+            Fill="#FFFFFFFF" />
+
+        <Border
+            x:Name="page_frame"
+            Width="278"
+            Height="370"
+            Margin="-4,0,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Stretch="Uniform">
-            <Grid Width="520" Height="380">
-                <Grid
-                    x:Name="PaperHost"
-                    Width="320"
-                    Height="380"
-                    RenderTransformOrigin="0.5,0.5">
-                    <Grid.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform x:Name="PaperScale" ScaleX="0.6" ScaleY="0.6" />
-                            <RotateTransform x:Name="PaperRotate" Angle="0" />
-                            <TranslateTransform x:Name="PaperTranslate" X="0" Y="0" />
-                        </TransformGroup>
-                    </Grid.RenderTransform>
+            Background="White"
+            BorderBrush="#30384A"
+            BorderThickness="8"
+            CornerRadius="5"
+            Opacity="0" />
 
-                    <Grid.Triggers>
-                        <EventTrigger RoutedEvent="Grid.Loaded">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <!--  Animate Scale  -->
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="PaperScale"
-                                        Storyboard.TargetProperty="ScaleX"
-                                        From="0.2"
-                                        To="1.0"
-                                        Duration="0:0:1" />
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="PaperScale"
-                                        Storyboard.TargetProperty="ScaleY"
-                                        From="0.2"
-                                        To="1.0"
-                                        Duration="0:0:1" />
+        <Viewbox Width="250" Height="350">
 
-                                    <!--  Animate Rotation  -->
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="PaperRotate"
-                                        Storyboard.TargetProperty="Angle"
-                                        To="360"
-                                        Duration="0:0:1" />
+            <Grid Margin="0,10,0,0" HorizontalAlignment="Center">
 
-                                    <!--  Animate Translation  -->
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="PaperTranslate"
-                                        Storyboard.TargetProperty="X"
-                                        To="0"
-                                        Duration="0:0:1.5" />
+                <Border
+                    x:Name="leftPage"
+                    Grid.Column="0"
+                    Margin="-100,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center">
 
-                                    <DoubleAnimation
-                                        Storyboard.TargetName="PaperTranslate"
-                                        Storyboard.TargetProperty="Y"
-                                        To="0"
-                                        Duration="0:0:1.5" />
+                    <Grid>
+                        <Path
+                            x:Name="left_page_path"
+                            Data="M 0 0 L 159 0 L 126 30 L 151 57 L 134 102 L 157 144 L 126 178 L 158 222 L 132 260 L 160 300 L 130 339 L 160 383 L 0 381 L 0 0"
+                            Fill="white"
+                            SnapsToDevicePixels="True"
+                            Stroke="#30384A"
+                            StrokeEndLineCap="Round"
+                            StrokeLineJoin="Round"
+                            StrokeStartLineCap="Round"
+                            StrokeThickness="8" />
 
-                                    <!--<DoubleAnimation Storyboard.TargetName="PaperTranslate"
-                                    Storyboard.TargetProperty="X"
-                                    BeginTime="0:0:2"
-                                    To="1000"
-                                    Duration="0:0:1"
-                                    AccelerationRatio="0.2"
-                                    DecelerationRatio="0.8" />-->
-
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Grid.Triggers>
+                        <Border
+                            Margin="18,10,0,0"
+                            Padding="12,6"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="#DF4B4B"
+                            CornerRadius="6">
+                            <TextBlock
+                                FontSize="36"
+                                FontWeight="Bold"
+                                Foreground="White"
+                                Text="PDF" />
+                        </Border>
 
 
+                        <Path
+                            x:Name="line1"
+                            Margin="-6,0,0,0"
+                            Data="M 36 139 A 1 1 0 0 0 36 156 L 146 156 L 157 144 L 154 139 L 36 139"
+                            Fill="#E6ECF2"
+                            Stroke="Transparent" />
 
-                    <Border
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Background="Transparent"
-                        CornerRadius="8">
-                        <Border.Effect>
-                            <DropShadowEffect
-                                BlurRadius="30"
-                                Opacity="0.6"
-                                ShadowDepth="12"
-                                Color="#000000" />
-                        </Border.Effect>
-                    </Border>
+                        <Path
+                            x:Name="line2"
+                            Margin="-4.8,0,0,0"
+                            Data="M 35 176 A 1 1 0 0 0 35 195 L 139 196 L 126 178 L 128 176 L 35 176"
+                            Fill="#E6ECF2"
+                            Stroke="Transparent" />
 
-                    <Border
-                        Background="White"
-                        BorderBrush="#30384A"
-                        BorderThickness="6"
-                        CornerRadius="8">
-                        <Grid>
-                            <Path
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-                                Data="M244,0 L320,0 L320,64 L244,0 Z"
-                                Fill="#EAEFF4"
-                                RenderTransformOrigin="1,1" />
+                        <Path
+                            x:Name="line3"
+                            Margin="-5,0,0,0"
+                            Data="M 35 210 A 1 1 0 0 0 35 227 L 154 228 L 158 222 L 149 210 L 35 210"
+                            Fill="#E6ECF2"
+                            Stroke="Transparent" />
 
-
-                            <Border
-                                Margin="18,24,0,0"
-                                Padding="12,6"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                                Background="#DF4B4B"
-                                CornerRadius="6">
-                                <TextBlock
-                                    FontSize="36"
-                                    FontWeight="Bold"
-                                    Foreground="White"
-                                    Text="PDF" />
-                            </Border>
+                        <Path
+                            x:Name="line4"
+                            Margin="-5,0,0,0"
+                            Data="M 35 241 A 1 1 0 0 0 35 260 L 133 261 L 132 260 L 144 242 L 35 241"
+                            Fill="#E6ECF2"
+                            Stroke="Transparent" />
 
 
-                            <StackPanel
-                                Margin="28,110,28,24"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top">
-                                <Rectangle
-                                    x:Name="line1"
-                                    Width="200"
-                                    Height="12"
-                                    Margin="10"
-                                    HorizontalAlignment="Left"
-                                    Fill="#E6ECF2"
-                                    RadiusX="6"
-                                    RadiusY="6" />
-                                <Rectangle
-                                    x:Name="line2"
-                                    Width="200"
-                                    Height="12"
-                                    Margin="10"
-                                    HorizontalAlignment="Left"
-                                    Fill="#E6ECF2"
-                                    RadiusX="6"
-                                    RadiusY="6" />
-                                <Rectangle
-                                    x:Name="line3"
-                                    Width="230"
-                                    Height="12"
-                                    Margin="10"
-                                    HorizontalAlignment="Left"
-                                    Fill="#E6ECF2"
-                                    RadiusX="6"
-                                    RadiusY="6" />
-                                <Rectangle
-                                    x:Name="line4"
-                                    Width="120"
-                                    Height="12"
-                                    Margin="10"
-                                    HorizontalAlignment="Left"
-                                    Fill="#E6ECF2"
-                                    RadiusX="6"
-                                    RadiusY="6" />
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </Grid>
+                    </Grid>
+                </Border>
+
+                <Border
+                    x:Name="rightPage"
+                    Margin="100,0,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+                    <Grid>
+                        <Path
+                            x:Name="right_page_path"
+                            Data="M 280 0 L 159 0 L 126 30 L 151 57 L 134 102 L 157 144 L 126 178 L 158 222 L 132 260 L 160 300 L 130 339 L 160 383 L 281 381 L 281 0"
+                            Fill="white"
+                            SnapsToDevicePixels="True"
+                            Stroke="#30384A"
+                            StrokeEndLineCap="Round"
+                            StrokeLineJoin="Round"
+                            StrokeStartLineCap="Round"
+                            StrokeThickness="8" />
+
+                        <Path
+                            x:Name="line5"
+                            Margin="5.8,0,0,0"
+                            Data="M 202 139 L 154 139 L 157 144 L 146 156 L 202 156 A 1 1 0 0 0 202 139"
+                            Fill="#E6ECF2"
+                            Stroke="Transparent" />
+
+                        <Path
+                            x:Name="line6"
+                            Margin="6,0,0,0"
+                            Data="M 128 176 L 229 176 M 229 176 L 229 194 L 229 195 A 1 1 0 0 0 229 176 L 139 196 L 126 178 L 128 176 M 229 176 L 229 195 L 139 196"
+                            Fill="#E6ECF2"
+                            Stroke="Transparent" />
+
+                        <Path
+                            x:Name="line7"
+                            Margin="5,0,0,0"
+                            Data="M 149 210 L 168 210 L 168 228 L 154 228 L 158 222 M 168 210 L 168 228 A 1 1 0 0 0 168 210"
+                            Fill="#E6ECF2"
+                            Stroke="Transparent" />
+
+                        <Path
+                            x:Name="line8"
+                            Margin="6,0,0,0"
+                            Data="M 133 261 L 132 260 L 144 242 L 189 242 L 189 261 A 1 1 0 0 0 189 242 L 133 261 M 189 242 L 189 261 L 133 261"
+                            Fill="#E6ECF2"
+                            Stroke="Transparent" />
+                    </Grid>
+
+                </Border>
             </Grid>
+
         </Viewbox>
+
+
     </Grid>
 </UserControl>

@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using DinkToPdf;
-using RazorLight;
 using RazorTemplateViewer.Services;
 using RazorTemplateViewer.ViewModels.Home;
 

@@ -6,7 +6,7 @@
     xmlns:convertors="clr-namespace:RazorTemplateViewer.Convertors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:razortemplateviewer="clr-namespace:RazorTemplateViewer"
+    xmlns:views="clr-namespace:RazorTemplateViewer.Views"
     xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
     d:DesignHeight="600"
     d:DesignWidth="1000"
@@ -53,7 +53,7 @@
                 Visibility="{Binding IsRendering, Converter={StaticResource BoolToVisibility}, ConverterParameter=reverse}"
                 ZoomFactor="2" />
 
-            <razortemplateviewer:Rendering_2 Grid.Column="2" Visibility="{Binding IsRendering, Converter={StaticResource BoolToVisibility}}" />
+            <views:Compiling Grid.Column="2" Visibility="{Binding IsRendering, Converter={StaticResource BoolToVisibility}}" />
 
             <GridSplitter Grid.Column="3" HorizontalAlignment="Stretch" />
 
